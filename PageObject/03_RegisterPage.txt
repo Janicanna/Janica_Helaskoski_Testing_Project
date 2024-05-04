@@ -1,0 +1,96 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+Documentation    Testing the User Registration functionality. Registration Test scenario with verification, valid and invalid credentials.
+
+Pre Condition    Open Browser
+Post Condition    Close All Browsers
+Tags    Registration, TS-2-Registration (For Agile Jira project management issue reference)
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Registration field variables
+
+LoginUrl = https://gitlab.com/users/sign_up
+UserName= [my username]
+Password= ***
+Invalid_Username= [invalid username]
+Invalid_Password= ******
+Empty= 
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps (Think about possible test cases)
+
+# Positive Test examples are below write test process steps for each below test case
+ 
+Register User With Valid Credentials
+    [Documentation]    Register user with valid username and password.
+    Navigate To Registration Page    LoginUrl
+    Enter Fist name   ValidName
+    Enter Last name   ValidLastname
+    Enter Email       ValidEmail
+    Enter Username    ValidUsername
+    Enter Password    ValidPassword
+    Submit Registration Form
+    Verify Success Message    User registration successful.
+
+# Negative Test examples keywords are below write test process steps for each below test case 
+
+	Register user with same above username,
+		...empty password,
+		...invalid email,
+		...Without recaptcha,
+
+# Negative Tests
+
+Register User With Existing Username
+    Navigate To Registration Page    LoginUrl
+    Enter Fist name   ValidName
+    Enter Last name   ValidLastname
+    Enter Email       ValidEmail
+    Enter Username    ValidUsername
+    Enter Password    ValidPassword
+    Submit Registration Form
+    Verify Error Message    Username is already taken.
+
+Register User With Empty Password
+    Navigate To Registration Page    LoginUrl
+    Enter Fist name   ValidName
+    Enter Last name   ValidLastname
+    Enter Email       ValidEmail
+    Enter Username    ValidUsername
+    Enter Password    Empty
+    Submit Registration Form
+    Verify Error Message   Minimum length is 8 characters.
+
+Register User With Invalid Email
+    Navigate To Registration Page    LoginUrl
+    Enter Fist name   ValidName
+    Enter Last name   ValidLastname
+    Enter Email       InvalidEmail
+    Enter Username    ValidUsername
+    Enter Password    ValidPassword
+    Submit Registration Form
+    Verify Error Message    Please provide a valid email address.
+
+Register User Without Recaptcha
+    Navigate To Registration Page    LoginUrl
+    Enter Fist name   ValidName
+    Enter Last name   ValidLastname
+    Enter Email       ValidEmail
+    Enter Username    ValidUsername
+    Enter Password    ValidPassword
+    Submit Registration Form
+    Verify Error Message    Complete verification to sign up.
+
+
+

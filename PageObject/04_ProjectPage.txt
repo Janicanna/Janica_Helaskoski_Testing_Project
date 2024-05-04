@@ -1,0 +1,67 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+Documentation	Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+Precondition  	Ensure the user is logged in and on the project creation page.
+Postcondition  	Sign out/Close All Browsers
+Tags 		 	Project, CRUD, TS-3-Project
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Define common variables
+
+LOGIN_URL              		https://gitlab.com/login
+PROJECT_URL            		https://gitlab.com/projects/new
+CREATE_BLANK_PROJECT_URL   	https://gitlab.com/projects/new#blank_project
+CREATE_FROM_TEMPLATE_URL   	https://gitlab.com/projects/new#create_from_template
+USERNAME               		example_username
+PASSWORD               		example_password
+PROJECT_NAME           		Testing Project
+TEMPLATE_NAME          		Spring
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+
+Create blank project
+	Navigate To create blank project page
+	Project name Testing project
+	Project URL https://gitlab.com/ testing
+	Project slug testing-project
+	Visibility Level Private
+	Project Configuration Initialize repository with a README
+	Submit create project Form
+	Valide that message is showing Project 'First project ' was successfully created.
+Create template project 
+Update name of template project
+Delete template project
+Valide that message is showing Project 'First project ' was successfully created.
+
+# Negative Test examples are below write test process steps for each below test case
+
+	Create a blank project with the previous same name
+
+	Navigate To create blank project page
+	Project name Testing project
+	Project URL https://gitlab.com/ testing
+	Project slug testing-project
+	Visibility Level Private
+	Project Configuration Initialize repository with a README
+	Submit create project Form
+	Valide that message is showing The form contains the following errors:Project namespace name has already been taken
+
+

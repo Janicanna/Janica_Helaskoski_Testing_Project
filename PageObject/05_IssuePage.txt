@@ -1,0 +1,83 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition:	Tips: Project must be created by the user before 
+Post Condition:  Ensure all created issues are deleted.
+Tags:  Issue, CRUD, TS-4-Issue
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Issue creation field variables, Updated name of the issue
+${IssueTitle}             Test Issue
+${UpdatedIssueTitle}      Updated Test Issue
+${LOGIN_URL}              https://gitlab.com/login
+UserName=                 [my username]
+Password=                 ***
+${PROJECT_URL}            https://gitlab.com/testing2910417/testing-project
+${ISSUE_URL}              https://gitlab.com/testing2910417/testing-project/-/issues/new
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+Create And Manipulate Issues
+
+    Navigate to issue page
+    Press new issue
+    Title (required) - put title
+    Press create issue
+    Page opens now the issue with the 1st title(test-title)
+    press edit
+    page opens to update mode
+    change title (test-title2)
+    press save changes
+    page now opens to issue page with updated title on the issue (test-title2)
+    Navigate to issue page
+    Press new issue
+    Create the second issue using the updated title
+    Navigate to issue page
+    press issue you want to delete (delete the first issue)
+    Press three dots
+    press delete issue
+    Recieve warning sign: Delete issue, Issue will be removed! Are you sure? 
+    press delete issue
+    recieve message: The issue was successfully deleted.
+
+Create Issue With Title
+    Navigate to issue page
+    Press new issue
+    Title (required) - put ${test-title}
+    Press create issue
+
+
+Update Issue Title
+    Navigate to issue page
+    Press issue with title ${test-title}
+    Press edit
+    Change title to ${test-title2}
+    Press save changes
+
+
+Delete Issue With Title
+    Navigate to issue page
+    Press issue with title ${test-title2}
+    Press three dots
+    Press delete issue
+    Recieve warning sign: Delete issue, Issue will be removed! Are you sure? 
+    press delete issue
+    recieve message: The issue was successfully deleted.
